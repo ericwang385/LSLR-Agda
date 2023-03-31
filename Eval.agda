@@ -28,4 +28,3 @@ data _⟶_ : Γ ⊢ A → Γ ⊢ A → Set where
     lamt : {e : Γ ,ᵏ J ⊢ B} {A : 𝒦 ⊢ᵏ J} → Λ e ·ᵏ A ⟶ e ᵏ[ A ]
     unpack : {α : 𝒦 ⊢ᵏ J} {e₁ : Γ ⊢ (A [ α ]ᵏ)} {R : Γ ,ᵏ J ⊢ A} → Val e₁ → unpack_as_,_of_ (pack α , e₁ as R) α R ⟶ e₁
     unroll : {e : Γ ⊢ A [ μ A ]ᵏ} → Val e → unroll (roll A e) ⟶ e  
-  

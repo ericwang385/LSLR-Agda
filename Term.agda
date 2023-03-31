@@ -60,24 +60,24 @@ lift ρ (S x) = S (ρ x)
 ᵏlift : ∀ {Γ Δ} {ρᵏ : Renᵏ 𝒦₁ 𝒦₂} → Ren Γ Δ ρᵏ → (Ren (Γ ,ᵏ J) (Δ ,ᵏ J) (liftᵏ ρᵏ))
 ᵏlift ρ (T x) = conv∋ (trans (sym (renᵏ-comp _)) (renᵏ-comp _)) (T (ρ x))
 
--- ren : ∀ {Γ Δ} {ρᵏ : Renᵏ 𝒦₁ 𝒦₂} → Ren Γ Δ ρᵏ → ({A : 𝒦₁ ⊢ᵏ *} → Γ ⊢ A → Δ ⊢ renᵏ ρᵏ A)
--- ren ρ (` x) = ` (ρ x)
--- ren ρ ⟨⟩ = ⟨⟩
--- ren ρ (± x) = ± x
--- ren ρ true = true
--- ren ρ false = true
--- ren ρ (if cond then e₁ else e₂) = if ren ρ cond then ren ρ e₁ else ren ρ e₂
--- ren ρ ⟨ e₁ , e₂ ⟩ = ⟨ ren ρ e₁ , ren ρ e₂ ⟩
--- ren ρ (fst e) = fst (ren ρ e)
--- ren ρ (snd e) = snd (ren ρ e)
--- ren ρ (ƛ e) = ƛ (ren (lift ρ) e)
--- ren ρ (e₁ · e₂) = ren ρ e₁ · ren ρ e₂
--- ren ρ (Λ e) = Λ (ren (ᵏlift ρ) e)
--- ren ρ (_·ᵏ_ {A = A} e B ) = conv⊢ (sym (ren[]ᵏ _ A B)) (ren ρ e ·ᵏ renᵏ _ B)
--- ren ρ (pack α , a as a₁) = {!  !}
--- ren ρ (unpack_as_,_of_ a α a₁) = {!   !}
--- ren ρ (roll A a) = {!   !}
--- ren ρ (unroll a) = {!   !}
+ren : ∀ {Γ Δ} {ρᵏ : Renᵏ 𝒦₁ 𝒦₂} → Ren Γ Δ ρᵏ → ({A : 𝒦₁ ⊢ᵏ *} → Γ ⊢ A → Δ ⊢ renᵏ ρᵏ A)
+ren ρ (` x) = ` (ρ x)
+ren ρ ⟨⟩ = ⟨⟩
+ren ρ (± x) = ± x
+ren ρ true = true
+ren ρ false = true
+ren ρ (if cond then e₁ else e₂) = if ren ρ cond then ren ρ e₁ else ren ρ e₂
+ren ρ ⟨ e₁ , e₂ ⟩ = ⟨ ren ρ e₁ , ren ρ e₂ ⟩
+ren ρ (fst e) = fst (ren ρ e)
+ren ρ (snd e) = snd (ren ρ e)
+ren ρ (ƛ e) = ƛ (ren (lift ρ) e)
+ren ρ (e₁ · e₂) = ren ρ e₁ · ren ρ e₂
+ren ρ (Λ e) = Λ (ren (ᵏlift ρ) e)
+ren ρ (_·ᵏ_ {A = A} e B ) = conv⊢ (sym (ren[]ᵏ _ A B)) (ren ρ e ·ᵏ renᵏ _ B)
+ren ρ (pack α , a as a₁) = {!  !}
+ren ρ (unpack_as_,_of_ a α a₁) = {!   !}
+ren ρ (roll A a) = {!   !}
+ren ρ (unroll a) = {!   !}
 
 _[_] : Γ , B ⊢ A → Γ ⊢ B → Γ ⊢ A 
 _[_] e = {!   !}

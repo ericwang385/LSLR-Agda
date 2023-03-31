@@ -10,6 +10,10 @@ data Kind : Set where
     * : Kind                    -- Type
     _⇒_ : Kind → Kind → Kind    -- Function Kind
 
+data Ct (A : Set) : Set where
+    Z : Ct A
+    S : Ct A → A → Ct A
+
 -- Kind Context
 infixl 5 _,ᵏ_
 data Ctxᵏ : Set where
